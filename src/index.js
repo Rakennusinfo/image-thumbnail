@@ -129,6 +129,7 @@ const getDimensions = (imageBuffer, percentageOfImage, dimensions) => {
 const sharpResize = (imageBuffer, dimensions, jpegOptions, fit, failOnError, withMetadata) => {
     return new Promise((resolve, reject) => {
         let result = sharp(imageBuffer, { failOnError })
+            .rotate()
             .resize({
                 ...dimensions, withoutEnlargement: true, fit: fit ? fit : 'contain',
             })
